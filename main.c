@@ -6,13 +6,13 @@
 /*   By: drabadan <drabadan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:16:58 by drabadan          #+#    #+#             */
-/*   Updated: 2024/10/29 11:02:11 by drabadan         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:05:37 by drabadan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(fdf *data)
+int	close_window(fdf *data)// что бы крестик в окне работал, так же заработало и сворачивание
 {
 	(void)data;
 	exit(0);
@@ -31,6 +31,18 @@ int	deal_key(int key, fdf *data)// принимаем коды с кнопок �
 		data -> shift_x -= 20;
 	if (key == 65363)
 		data -> shift_x += 20;
+	if (key == 'q') // Поворот вокруг оси X +
+		data->angle_x += 0.05;
+	if (key == 'a') // Поворот вокруг оси X -
+		data->angle_x -= 0.05;
+	if (key == 'w') // Поворот вокруг оси Y +
+		data->angle_y += 0.05;
+	if (key == 's') // Поворот вокруг оси Y -
+		data->angle_y -= 0.05;
+	if (key == 'e') // Поворот вокруг оси Z +
+		data->angle_z += 0.05;
+	if (key == 'd') // Поворот вокруг оси Z -
+		data->angle_z -= 0.05;
 	if (key == 65307)
 		exit (0);
 	mlx_clear_window(data -> mlx_ptr, data -> win_ptr);

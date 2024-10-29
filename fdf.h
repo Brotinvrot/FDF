@@ -6,7 +6,7 @@
 /*   By: drabadan <drabadan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:20:38 by drabadan          #+#    #+#             */
-/*   Updated: 2024/10/29 11:02:16 by drabadan         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:08:44 by drabadan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct
 	int	shift_x;
 	int	shift_y;
 
+	float	angle_x;
+	float	angle_y;
+	float	angle_z;
+
 	void	*mlx_ptr;
 	void	*win_ptr;
 }	fdf;
@@ -60,5 +64,10 @@ int		ft_wdcounter(char const *str, char c);
 void	ft_memdel(void **ap);
 int		ft_atoi(const char *s);
 void	draw(fdf *data);
+
+//========= ROTATE ============
+void	rotate_x(float *y, float *z, float angle);
+void	rotate_y(float *x, float *z, float angle);
+void	rotate_z(float *x, float *y, float angle);
 
 #endif

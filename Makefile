@@ -10,7 +10,7 @@ LDFLAGS = ./minilibx-linux/libmlx.a -lXext -lX11 -lm
 # CFLAGS = -L (путь от места расположения мейк файла)
 # ./minilibx-linux/ и флаг для поиска файла библиотеки -lmlx
 
-SRC = main.c draw.c read_line.c gnl.c liba.c
+SRC = main.c draw.c read_line.c gnl.c liba.c rotate.c
 
 OBJ = $(SRC:.c=.o)
 

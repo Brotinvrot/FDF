@@ -6,7 +6,7 @@
 /*   By: drabadan <drabadan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:21:07 by drabadan          #+#    #+#             */
-/*   Updated: 2024/10/29 10:47:06 by drabadan         ###   ########.fr       */
+/*   Updated: 2024/10/29 13:34:33 by drabadan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 void	isometric(float *x, float *y, int z)
 {
-	*x = (*x - *y) * cos(1);
-	*y = (*x + *y) * sin(1) - z;
+	float previous_x = *x;
+	float previous_y = *y;
+	*x = (previous_x - previous_y) * cos(0.523599);
+	*y = (previous_x + previous_y) * sin(0.523599) - z;
 }
 
 void	bresenham(float x, float y, float x1, float y1, fdf *data)
@@ -26,22 +28,34 @@ void	bresenham(float x, float y, float x1, float y1, fdf *data)
 	float	x_step;
 	float	y_step;
 	int		max;
-	int		z;
-	int		z1;
+	float	z;
+	float	z1;
 
-	z = data -> z_matrix[(int)y][(int)x];
-	z1 = data -> z_matrix[(int)y1][(int)x1];
+	z = (float)data -> z_matrix[(int)y][(int)x];
+	z1 = (float)data -> z_matrix[(int)y1][(int)x1];
 
 //============ ZOOM ====================
 	x *= data -> zoom;
 	y *= data -> zoom;
 	x1 *= data -> zoom;
 	y1 *= data -> zoom;
+
+//============ ROTATION =================
+	rotate_x(&y, &z, data -> angle_x);
+	rotate_y(&x, &z, data -> angle_y);
+	rotate_z(&x, &y, data -> angle_z);
+
+	rotate_x(&y1, &z1, data -> angle_x);
+	rotate_y(&x1, &z1, data -> angle_y);
+	rotate_z(&x1, &y1, data -> angle_z);
+
 //=========== COLOR =====================
 	data -> color = (z || z1) ? 0xe80c0c : 0xffffff;
+
 //============ 3D ======================
 	isometric(&x, &y, z);
 	isometric(&x1, &y1, z1);
+
 //=========== SHIFT ====================
 	x += data -> shift_x;
 	y += data -> shift_y;
