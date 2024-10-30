@@ -6,7 +6,7 @@
 /*   By: drabadan <drabadan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:21:07 by drabadan          #+#    #+#             */
-/*   Updated: 2024/10/29 13:34:33 by drabadan         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:07:20 by drabadan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	bresenham(float x, float y, float x1, float y1, fdf *data)
 	rotate_z(&x1, &y1, data -> angle_z);
 
 //=========== COLOR =====================
-	data -> color = (z || z1) ? 0xe80c0c : 0xffffff;
+	data -> color = get_color(z);
 
 //============ 3D ======================
 	isometric(&x, &y, z);

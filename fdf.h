@@ -6,7 +6,7 @@
 /*   By: drabadan <drabadan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:20:38 by drabadan          #+#    #+#             */
-/*   Updated: 2024/10/29 13:08:44 by drabadan         ###   ########.fr       */
+/*   Updated: 2024/10/29 16:03:12 by drabadan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ typedef struct
 	float	angle_y;
 	float	angle_z;
 
+	int	key_up;
+	int	key_down;
+	int	key_left;
+	int	key_right;
+	int	key_zoom_in;
+	int	key_zoom_out;
+	int	key_rotate_x_pos;
+	int	key_rotate_x_neg;
+	int	key_rotate_y_pos;
+	int	key_rotate_y_neg;
+	int	key_rotate_z_pos;
+	int	key_rotate_z_neg;
+
 	void	*mlx_ptr;
 	void	*win_ptr;
 }	fdf;
@@ -69,5 +82,7 @@ void	draw(fdf *data);
 void	rotate_x(float *y, float *z, float angle);
 void	rotate_y(float *x, float *z, float angle);
 void	rotate_z(float *x, float *y, float angle);
+
+int	get_color(int z);
 
 #endif
